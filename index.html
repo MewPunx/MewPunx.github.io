@@ -53,19 +53,25 @@
         <div class="container">
             <h2>Proyectos / Projects</h2>
 
+            <div class="filter-buttons">
+                <button data-filter="all" class="active">All</button>
+                <button data-filter="web">Web</button>
+                <button data-filter="science">Science</button>
+                <button data-filter="in-progress">In Progress</button>
+            </div>
             <div class="project-grid">
 
-                <div class="card">
+                <div class="card" data-category="science">
                     <h3>Polifenoles en vino</h3>
                     <p>Modelo numérico de transferencia de masa en Python.</p>
                 </div>
 
-                <div class="card">
+                <div class="card" data-category="science">
                     <h3>Pheflux</h3>
                     <p>Modelación de rutas metabólicas con datos transcriptómicos.</p>
                 </div>
 
-                <div class="card">
+                <div class="card" data-category="web">
                     <h3>Alerta Rock</h3>
                     <p>Aplicación web con Django y PostgreSQL.</p>
                 </div>
