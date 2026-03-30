@@ -50,28 +50,31 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ======================
-    // FILTRO DE PROYECTOS
-    // ======================
-    filterButtons.forEach(button => {
-        button.addEventListener("click", () => {
+// FILTRO DE PROYECTOS
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
 
-            filterButtons.forEach(btn => btn.classList.remove("active"));
-            button.classList.add("active");
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
 
-            const filter = button.getAttribute("data-filter");
+        const filter = button.dataset.filter;
 
-            cards.forEach(card => {
-                const category = card.getAttribute("data-category");
+        cards.forEach(card => {
+            const category = card.dataset.category;
 
-                if (filter === "all" || category === filter) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
-            });
+            if (filter === "all" || category === filter) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
         });
     });
+});
+
+// Estado inicial seguro
+cards.forEach(card => {
+    card.style.display = "block";
+});
 
     // ======================
     // MODAL
