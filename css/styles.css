@@ -134,3 +134,21 @@ h2 {
 .contact p {
     margin-top: 10px;
 }
+
+.navbar a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Hidden initially */
+.card, .about, .hero {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+/* When visible */
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
