@@ -1,0 +1,23 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIABLES */
+:root {
+    --bg-color: #0f172a;
+    --primary-color: #10b981; /* verde */
+    --text-color: #e5e7eb;
+    --secondary-text: #9ca3af;
+    --card-bg: #1e293b;
+}
+
+/* GLOBAL */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
