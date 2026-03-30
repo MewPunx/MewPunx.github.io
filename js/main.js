@@ -70,3 +70,33 @@ filterButtons.forEach(button => {
         });
     });
 });
+
+// Modal functionality
+const modal = document.getElementById("project-modal");
+const modalTitle = document.getElementById("modal-title");
+const modalDescription = document.getElementById("modal-description");
+const closeBtn = document.querySelector(".close-btn");
+
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        const title = card.getAttribute("data-title");
+        const description = card.getAttribute("data-description");
+
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+
+        modal.style.display = "block";
+    });
+});
+
+// Close modal
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Close when clicking outside
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
