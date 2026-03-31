@@ -13,21 +13,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".navbar a");
 
-    // ======================
-    // SMOOTH SCROLL
-    // ======================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function(e) {
-            e.preventDefault();
+// ======================
+// SMOOTH SCROLL (FIXED)
+// ======================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
 
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: "smooth"
-                });
-            }
-        });
+        const href = this.getAttribute("href");
+
+        // Solo aplicar a links internos reales
+        if (!href || href === "#" || href.startsWith("http")) return;
+
+        e.preventDefault();
+
+        const target = document.querySelector(href);
+
+        if (target) {
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
     });
+});
 
     // ======================
     // NAVBAR ACTIVA
