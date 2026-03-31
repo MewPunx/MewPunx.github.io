@@ -81,7 +81,10 @@ const modalImage = document.getElementById("modal-image");
 const modalLink = document.getElementById("modal-link");
 
 cards.forEach(card => {
-    card.addEventListener("click", () => {
+    card.addEventListener("click", (e) => {
+
+        // 👇 Evita que el click del botón abra/cierre el modal
+        if (e.target.tagName === "A") return;
 
         modalTitle.textContent = card.dataset.title;
         modalDescription.textContent = card.dataset.description;
@@ -91,6 +94,10 @@ cards.forEach(card => {
 
         modal.style.display = "block";
     });
+});
+
+modalLink.addEventListener("click", (e) => {
+    e.stopPropagation();
 });
 
 
