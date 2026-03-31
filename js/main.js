@@ -140,3 +140,7 @@ modal.addEventListener("click", () => {
     elements.forEach(el => observer.observe(el));
 
 });
+
+modalLink.addEventListener("click", () => {
+    console.log("CLICK OK");
+});
