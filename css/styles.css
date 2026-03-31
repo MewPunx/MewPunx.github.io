@@ -201,8 +201,6 @@ h2 {
     max-width: 500px;
     border-radius: 15px;
     position: relative;
-
-    display: flex;
     flex-direction: column;
     gap: 15px;
 
@@ -236,9 +234,6 @@ h2 {
     cursor: pointer;
 }
 
-.modal {
-    animation: fadeBg 0.2s ease;
-}
 
 @keyframes modalFade {
     from {

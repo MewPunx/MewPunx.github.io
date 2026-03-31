@@ -92,7 +92,7 @@ cards.forEach(card => {
         modalImage.src = card.dataset.image;
         modalLink.href = card.dataset.link;
 
-        modal.style.display = "block";
+        modal.style.display = "flex";
     });
 });
 
