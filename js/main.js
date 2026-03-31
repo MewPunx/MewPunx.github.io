@@ -80,17 +80,20 @@ cards.forEach(card => {
 const modalImage = document.getElementById("modal-image");
 const modalLink = document.getElementById("modal-link");
 
+modal.style.display = "none";
+
 cards.forEach(card => {
     card.addEventListener("click", (e) => {
 
-        // 👇 Evita que el click del botón abra/cierre el modal
+        if (!card.dataset.title) return; // evita basura
+
         if (e.target.tagName === "A") return;
 
-        modalTitle.textContent = card.dataset.title;
-        modalDescription.textContent = card.dataset.description;
+        modalTitle.textContent = card.dataset.title || "";
+        modalDescription.textContent = card.dataset.description || "";
 
-        modalImage.src = card.dataset.image;
-        modalLink.href = card.dataset.link;
+        modalImage.src = card.dataset.image || "";
+        modalLink.href = card.dataset.link || "#";
 
         modal.style.display = "flex";
     });
@@ -98,6 +101,18 @@ cards.forEach(card => {
 
 modalLink.addEventListener("click", (e) => {
     e.stopPropagation();
+});
+
+// Cerrar con botón
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Cerrar haciendo click fuera del contenido
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
 });
 
 
