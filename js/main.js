@@ -76,17 +76,21 @@ cards.forEach(card => {
     card.style.display = "block";
 });
 
-// MODAL
+// ======================
+// MODAL (FIXED)
+// ======================
 const modalImage = document.getElementById("modal-image");
 const modalLink = document.getElementById("modal-link");
+const modalContent = document.querySelector(".modal-content");
 
+// Estado inicial seguro
 modal.style.display = "none";
 
+// Abrir modal
 cards.forEach(card => {
     card.addEventListener("click", (e) => {
 
-        if (!card.dataset.title) return; // evita basura
-
+        if (!card.dataset.title) return;
         if (e.target.tagName === "A") return;
 
         modalTitle.textContent = card.dataset.title || "";
@@ -99,22 +103,31 @@ cards.forEach(card => {
     });
 });
 
-modalLink.addEventListener("click", (e) => {
+// Evita que clicks dentro del modal lo cierren o bloqueen botones
+modalContent.addEventListener("click", (e) => {
     e.stopPropagation();
 });
 
-// Cerrar con botón
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
+// Link del repositorio
+modalLink.addEventListener("click", (e) => {
+    e.stopPropagation();
 
-// Cerrar haciendo click fuera del contenido
-modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.style.display = "none";
+    if (!modalLink.href || modalLink.href.endsWith("#")) {
+        e.preventDefault();
+        console.warn("Link vacío");
     }
 });
 
+// Cerrar con botón
+closeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    modal.style.display = "none";
+});
+
+// Cerrar haciendo click fuera
+modal.addEventListener("click", () => {
+    modal.style.display = "none";
+});
 
     // ======================
     // ANIMACIONES SCROLL
