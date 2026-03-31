@@ -108,14 +108,9 @@ modalContent.addEventListener("click", (e) => {
     e.stopPropagation();
 });
 
-// Link del repositorio
+// Link del repositorio (FIX REAL)
 modalLink.addEventListener("click", (e) => {
     e.stopPropagation();
-
-    if (!modalLink.href || modalLink.href.endsWith("#")) {
-        e.preventDefault();
-        console.warn("Link vacío");
-    }
 });
 
 // Cerrar con botón
