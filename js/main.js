@@ -14,25 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll(".navbar a");
 
 // ======================
-// SMOOTH SCROLL (FIXED)
+// SMOOTH SCROLL (FIX DEFINITIVO)
 // ======================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function(e) {
 
         const href = this.getAttribute("href");
 
-        // Solo aplicar a links internos reales
-        if (!href || href === "#" || href.startsWith("http")) return;
+        // Ignorar links vacíos o placeholder
+        if (!href || href === "#") return;
+
+        // Buscar target real
+        const target = document.querySelector(href);
+
+        if (!target) return;
 
         e.preventDefault();
 
-        const target = document.querySelector(href);
-
-        if (target) {
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
-        }
+        target.scrollIntoView({
+            behavior: "smooth"
+        });
     });
 });
 
@@ -84,7 +85,7 @@ cards.forEach(card => {
 });
 
 // ======================
-// MODAL (FIXED)
+// MODAL (FINAL FIX)
 // ======================
 const modalImage = document.getElementById("modal-image");
 const modalLink = document.getElementById("modal-link");
@@ -104,18 +105,18 @@ cards.forEach(card => {
         modalDescription.textContent = card.dataset.description || "";
 
         modalImage.src = card.dataset.image || "";
-        modalLink.href = card.dataset.link || "#";
+        modalLink.href = card.dataset.link || "";
 
         modal.style.display = "flex";
     });
 });
 
-// Evita que clicks dentro del modal lo cierren o bloqueen botones
+// Evita que clicks dentro del modal cierren o bloqueen
 modalContent.addEventListener("click", (e) => {
     e.stopPropagation();
 });
 
-// Link del repositorio (FIX REAL)
+// Link repositorio (no interferir)
 modalLink.addEventListener("click", (e) => {
     e.stopPropagation();
 });
@@ -126,7 +127,7 @@ closeBtn.addEventListener("click", (e) => {
     modal.style.display = "none";
 });
 
-// Cerrar haciendo click fuera
+// Cerrar clickeando fuera
 modal.addEventListener("click", () => {
     modal.style.display = "none";
 });
@@ -146,8 +147,4 @@ modal.addEventListener("click", () => {
 
     elements.forEach(el => observer.observe(el));
 
-});
-
-modalLink.addEventListener("click", () => {
-    console.log("CLICK OK");
 });
